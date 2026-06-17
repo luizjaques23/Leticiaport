@@ -122,13 +122,6 @@ export default function Header({ onOpenResume }: HeaderProps) {
 
             {/* Language and CTA */}
             <div className="hidden sm:flex items-center space-x-4">
-              <button
-                onClick={onOpenResume}
-                className="flex items-center space-x-1.5 px-3.5 py-2 border border-ink/20 hover:border-ink hover:bg-ink hover:text-paper text-xs font-semibold uppercase tracking-wider transition-all duration-300 rounded-none cursor-pointer focus:outline-none"
-              >
-                <FileText className="w-3.5 h-3.5 text-accent group-hover:text-paper" />
-                <span>Ver Dossiê CV</span>
-              </button>
               <button 
                 onClick={() => scrollToSection("contato")}
                 className={`flex items-center space-x-1.5 px-4.5 py-2 rounded text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-xs cursor-pointer ${
@@ -191,19 +184,9 @@ export default function Header({ onOpenResume }: HeaderProps) {
               
               <div className="pt-4 border-t border-ink/10 flex flex-col space-y-3">
                 <div className="flex justify-between items-center px-4">
-                  <span className="text-[10px] text-ink/60 font-mono uppercase tracking-wider font-bold">Dossiê e Contato</span>
+                  <span className="text-[10px] text-ink/60 font-mono uppercase tracking-wider font-bold">Contato</span>
                   <span className="text-xs text-accent font-semibold tracking-wider">Painel</span>
                 </div>
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (onOpenResume) onOpenResume();
-                  }}
-                  className="w-full bg-paper border border-ink text-ink font-semibold text-center py-3 rounded text-xs uppercase tracking-widest hover:bg-ink/5 transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer"
-                >
-                  <FileText className="w-4 h-4 text-accent" />
-                  <span>Ver Dossiê CV</span>
-                </button>
                 <button
                   onClick={() => scrollToSection("contato")}
                   className="w-full bg-ink text-paper font-semibold text-center py-3 rounded text-xs uppercase tracking-widest hover:bg-ink/95 transition-colors shadow-sm flex items-center justify-center space-x-2 cursor-pointer"

@@ -10,26 +10,6 @@ interface HeroProps {
 
 export default function Hero({ onOpenResume }: HeroProps) {
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [profileImg, setProfileImg] = useState<string>(() => {
-    const saved = localStorage.getItem("leticia_profile_img");
-    if (saved && !saved.includes("unsplash.com")) {
-      return saved;
-    }
-    return profileImgSrc;
-  });
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const resultStr = reader.result as string;
-        setProfileImg(resultStr);
-        localStorage.setItem("leticia_profile_img", resultStr);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText("leticia.almds@gmail.com");
@@ -174,28 +154,13 @@ export default function Hero({ onOpenResume }: HeroProps) {
               <div className="absolute inset-4 border border-ink/10 translate-x-3 translate-y-3 pointer-events-none" />
 
               {/* Main Photo Card Container */}
-              <label className="relative overflow-hidden border border-ink bg-paper shadow-lg z-10 block transition-transform duration-500 hover:scale-[1.01] cursor-pointer group">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="hidden"
-                />
+              <div className="relative overflow-hidden border border-ink bg-paper shadow-lg z-10 block transition-transform duration-500 hover:scale-[1.01] group">
                 <img
-                  src={profileImg}
+                  src={profileImgSrc}
                   alt="Letícia Silva - Executive Portrait"
-                  className="w-full h-auto object-cover aspect-[4/5] grayscale contrast-[105%] group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-auto object-cover aspect-[4/5]"
                   referrerPolicy="no-referrer"
                 />
-
-                {/* Hover Profile Upload Overlay */}
-                <div className="absolute inset-0 bg-ink/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-paper pb-16">
-                  <div className="bg-paper/20 backdrop-blur-md p-3.5 rounded-full border border-paper/10 mb-2">
-                    <Camera className="w-6 h-6 text-paper" />
-                  </div>
-                  <span className="text-[10px] uppercase font-mono tracking-widest font-bold">Trocar Foto Oficial</span>
-                  <span className="text-[8px] text-paper/70 mt-1 uppercase font-semibold">Salva no Navegador</span>
-                </div>
 
                 {/* Floating overlay card at the bottom of the photo */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink via-ink/90 to-transparent p-6 pt-16 text-left z-20">
@@ -207,7 +172,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
                     "Operações eficientes começam na ponta, descobrindo o que trava o dia a dia e automatizando o core para que as filiais operem sozinhas."
                   </p>
                 </div>
-              </label>
+              </div>
 
               {/* Side Floating Medal Badges (Extra micro-interaction delight) */}
               <div className="absolute -top-4 -right-4 bg-accent text-ink border border-ink px-4 py-2 text-center shadow-md transform rotate-6 hover:rotate-0 transition-transform duration-300 z-20">
