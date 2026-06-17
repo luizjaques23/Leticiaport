@@ -11,7 +11,11 @@ interface HeroProps {
 export default function Hero({ onOpenResume }: HeroProps) {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [profileImg, setProfileImg] = useState<string>(() => {
-    return localStorage.getItem("leticia_profile_img") || profileImgSrc;
+    const saved = localStorage.getItem("leticia_profile_img");
+    if (saved && !saved.includes("unsplash.com")) {
+      return saved;
+    }
+    return profileImgSrc;
   });
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
