@@ -173,7 +173,7 @@ export default function Timeline() {
                           {/* KPIs numerical targets visualization */}
                           <div className="space-y-3">
                             <span className="text-[9px] font-mono text-ink/40 uppercase tracking-widest block font-bold">Métricas Atingidas de Sucesso</span>
-                            <div className="grid grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                               {exp.kpis.map((kpi, kIdx) => (
                                 <div key={kIdx} className="bg-[#fcfbf9] p-3.5 rounded-none border border-ink/10 hover:border-ink transition-colors text-center">
                                   <div className="text-xl sm:text-2xl font-serif font-bold text-ink">{kpi.value}</div>
