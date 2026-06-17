@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ArrowRight, ChevronDown, Award, Play, CheckCircle2, FileText, Calendar, Camera, Upload, Mail, Phone, MapPin, Copy, Check } from "lucide-react";
 import { motion } from "motion/react";
 
+import profileImgSrc from "@/assets/perfil.jpg";
+
 interface HeroProps {
   onOpenResume?: () => void;
 }
@@ -9,7 +11,7 @@ interface HeroProps {
 export default function Hero({ onOpenResume }: HeroProps) {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [profileImg, setProfileImg] = useState<string>(() => {
-    return localStorage.getItem("leticia_profile_img") || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=650&h=650";
+    return localStorage.getItem("leticia_profile_img") || profileImgSrc;
   });
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
